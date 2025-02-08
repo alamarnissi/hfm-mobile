@@ -13,7 +13,7 @@ class AppTheme {
       ),
     ),
     textTheme: TextTheme(
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         color: Colors.black,
       ),
     ),
@@ -28,7 +28,7 @@ class AppTheme {
       ),
     ),
     textTheme: TextTheme(
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         color: Colors.white,
       ),
     ),
