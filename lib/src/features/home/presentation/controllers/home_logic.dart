@@ -40,7 +40,7 @@ class HomeLogic extends GetxController with StateMixin<HomeState> {
 
     if (response.statusCode == 200) {
       var apiParseResult = parseM3U(response.data);
-      return apiParseResult
+      return apiParseResult.where((element) => element['url']!=null&&  element['logo']!=null,)
           .map<TvChannelEntity>(
             (e) => TvChannelEntity.fromJson(e),
           )

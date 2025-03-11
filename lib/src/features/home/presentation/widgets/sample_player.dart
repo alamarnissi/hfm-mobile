@@ -1,6 +1,7 @@
 import 'package:app_logger/app_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flick_video_player/flick_video_player.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 
 class SamplePlayer extends StatefulWidget {
@@ -30,9 +31,12 @@ class _SamplePlayerState extends State<SamplePlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: FlickVideoPlayer(
-          flickManager: flickManager
+    return SafeArea(
+      child: Container(
+        child: FlickVideoPlayer(
+
+            flickManager: flickManager
+        ),
       ),
     );
   }
