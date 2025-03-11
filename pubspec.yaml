@@ -42,7 +42,6 @@ dependencies:
   google_fonts:
   line_icons: ^2.0.1
   dio: ^4.0.4
-  cached_network_image: ^3.2.0
   intl: ^0.18.0
   flutter_svg: ^1.0.3
   unicons: ^2.0.2
@@ -55,9 +54,22 @@ dependencies:
   animate_do: ^3.0.2
   app_logger:
     git: https://github.com/taghassan/app_logger.git
+
+  freezed_annotation:
+  equatable:
+  cached_network_image: ^3.4.1
+  video_player:
+  flick_video_player:
+  wakelock_windows:
+
 dev_dependencies:
   flutter_launcher_icons: ^0.11.0
-
+  # add the generator to your dev_dependencies
+  injectable_generator:
+  # add build runner if not already added
+  build_runner:
+dependency_overrides:
+  win32: ^5.0.0
 flutter_icons:
   android: "launcher_icon"
   ios: true

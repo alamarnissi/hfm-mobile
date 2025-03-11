@@ -1,0 +1,2 @@
+/Volumes/1.1TB/Developments/GitHub/Tiwee/android/app/.cxx/Debug/5m1t3e1y/x86/CMakeFiles/edit_cache.dir
+/Volumes/1.1TB/Developments/GitHub/Tiwee/android/app/.cxx/Debug/5m1t3e1y/x86/CMakeFiles/rebuild_cache.dir
