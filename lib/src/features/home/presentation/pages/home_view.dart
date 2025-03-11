@@ -36,7 +36,7 @@ class HomePage extends GetView<HomeLogic> {
               (state) => Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
-                child: GridView.builder(
+                child:controller.tvChannelsList.isEmpty?Center( child: CircularProgressIndicator(),): GridView.builder(
                   itemCount: controller.tvChannelsList.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
