@@ -2,12 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:Tiwee/business_logic/provider/category_provider.dart';
-import 'package:Tiwee/business_logic/provider/country_code.dart';
-import 'package:Tiwee/business_logic/provider/country_provider.dart';
-import 'package:Tiwee/presentation/screens/home/country_channels.dart';
-import 'package:Tiwee/presentation/widgets/main_appbar.dart';
-import 'package:Tiwee/presentation/widgets/sorted_by_category_widget/fav_all_card.dart';
+import 'package:tiwee/business_logic/provider/category_provider.dart';
+import 'package:tiwee/business_logic/provider/country_code.dart';
+import 'package:tiwee/business_logic/provider/country_provider.dart';
+import 'package:tiwee/presentation/screens/home/country_channels.dart';
+import 'package:tiwee/presentation/widgets/main_appbar.dart';
+import 'package:tiwee/presentation/widgets/sorted_by_category_widget/fav_all_card.dart';
 
 final currentIndexProvider = StateProvider<int>((ref) {
   return 0;

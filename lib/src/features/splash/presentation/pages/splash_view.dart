@@ -1,5 +1,5 @@
-import 'package:Tiwee/core/consts.dart';
-import 'package:Tiwee/src/features/splash/presentation/controllers/splash_logic.dart';
+import 'package:tiwee/core/consts.dart';
+import 'package:tiwee/src/features/splash/presentation/controllers/splash_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';

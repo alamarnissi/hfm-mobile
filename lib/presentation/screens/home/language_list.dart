@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:Tiwee/business_logic/model/channel.dart';
-import 'package:Tiwee/core/consts.dart';
-import 'package:Tiwee/presentation/screens/home/player.dart';
+import 'package:tiwee/business_logic/model/channel.dart';
+import 'package:tiwee/core/consts.dart';
+import 'package:tiwee/presentation/screens/home/player.dart';
 import 'package:lottie/lottie.dart';
 class LanguageList extends StatelessWidget {
   const LanguageList({Key? key, required this.channels}) : super(key: key);

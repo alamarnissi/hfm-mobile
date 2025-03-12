@@ -9,7 +9,7 @@ abstract class Configuration {
 
 }
 
-@LazySingleton(as: Configuration, env: [AppEnvironment.dev])
+@LazySingleton(as: Configuration, env: [TiweeAppEnvironment.dev])
 class DevConfiguration implements Configuration {
   @override
   String get getBaseUrl => '#';
@@ -19,7 +19,7 @@ class DevConfiguration implements Configuration {
 
 }
 
-@LazySingleton(as: Configuration, env: [AppEnvironment.staging])
+@LazySingleton(as: Configuration, env: [TiweeAppEnvironment.staging])
 class StagingConfiguration implements Configuration {
   @override
   String get getBaseUrl => '#';
@@ -30,7 +30,7 @@ class StagingConfiguration implements Configuration {
 
 }
 
-@LazySingleton(as: Configuration, env: [AppEnvironment.prod])
+@LazySingleton(as: Configuration, env: [TiweeAppEnvironment.prod])
 class ProductionConfiguration implements Configuration {
   @override
   String get getBaseUrl => '#';

@@ -1,5 +1,5 @@
-import 'package:Tiwee/src/features/home/domain/entities/tv_channel_entity.dart';
-import 'package:Tiwee/src/features/home/presentation/widgets/sample_player.dart';
+import 'package:tiwee/src/features/home/domain/entities/tv_channel_entity.dart';
+import 'package:tiwee/src/features/home/presentation/widgets/sample_player.dart';
 import 'package:app_logger/app_logger.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

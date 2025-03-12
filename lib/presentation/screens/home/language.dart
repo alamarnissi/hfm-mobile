@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:Tiwee/business_logic/provider/languageProvider.dart';
-import 'package:Tiwee/core/consts.dart';
-import 'package:Tiwee/presentation/screens/home/language_list.dart';
+import 'package:tiwee/business_logic/provider/languageProvider.dart';
+import 'package:tiwee/core/consts.dart';
+import 'package:tiwee/presentation/screens/home/language_list.dart';
 import 'package:lottie/lottie.dart';
 
 class Language extends ConsumerWidget {

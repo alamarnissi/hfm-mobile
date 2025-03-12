@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:Tiwee/core/consts.dart';
+import 'package:tiwee/core/consts.dart';
 
 class BigCardChannels extends StatelessWidget {
   const BigCardChannels(

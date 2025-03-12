@@ -1,9 +1,9 @@
-class AppEnvironment {
+class TiweeAppEnvironment {
   /// name of the environment
   final String name;
 
   /// default constructor
-  const AppEnvironment(this.name);
+  const TiweeAppEnvironment(this.name);
 
   /// preset of common env name 'dev'
   static const dev = 'dev';

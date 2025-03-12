@@ -1,5 +1,5 @@
-import 'package:Tiwee/src/core/injectable/injection.dart';
-import 'package:Tiwee/src/features/home/domain/entities/tv_channel_entity.dart';
+import 'package:tiwee/src/core/injectable/injection.dart';
+import 'package:tiwee/src/features/home/domain/entities/tv_channel_entity.dart';
 import 'package:app_logger/app_logger.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';

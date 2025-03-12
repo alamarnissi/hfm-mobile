@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:Tiwee/business_logic/model/channel_model.dart';
+import 'package:tiwee/business_logic/model/channel_model.dart';
 
 final channelCardProvider = StateProvider<List<ChannelModel>>((ref) {
   List<ChannelModel> channelsCard = [

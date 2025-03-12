@@ -1,4 +1,4 @@
-import 'package:Tiwee/src/routes/routes.dart';
+import 'package:tiwee/src/routes/routes.dart';
 import 'package:get/get.dart';
 
 import 'splash_state.dart';
@@ -9,7 +9,7 @@ class SplashLogic extends GetxController with StateMixin<SplashState>{
   void onInit() {
     change(null,status: RxStatus.success());
     Future.delayed(Duration(seconds: 2),() {
-      Get.offAllNamed(Routs.homeRoute);
+      Get.offAllNamed(TiweeRouts.homeRoute);
     },);
     super.onInit();
   }

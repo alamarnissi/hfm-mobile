@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-import 'package:Tiwee/business_logic/provider/category_provider.dart';
-import 'package:Tiwee/business_logic/provider/channel_card_provider.dart';
-import 'package:Tiwee/core/consts.dart';
+import 'package:tiwee/business_logic/provider/category_provider.dart';
+import 'package:tiwee/business_logic/provider/channel_card_provider.dart';
+import 'package:tiwee/core/consts.dart';
 
-import 'package:Tiwee/presentation/screens/home/sorted_by_category_page.dart';
-import 'package:Tiwee/presentation/screens/home/sorted_by_countryPage.dart';
-import 'package:Tiwee/presentation/widgets/home_page_widget/big_card_channel.dart';
-import 'package:Tiwee/presentation/widgets/main_appbar.dart';
+import 'package:tiwee/presentation/screens/home/sorted_by_category_page.dart';
+import 'package:tiwee/presentation/screens/home/sorted_by_countryPage.dart';
+import 'package:tiwee/presentation/widgets/home_page_widget/big_card_channel.dart';
+import 'package:tiwee/presentation/widgets/main_appbar.dart';
 
 class Menu extends ConsumerWidget {
   const Menu({Key? key}) : super(key: key);

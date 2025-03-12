@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:Tiwee/presentation/screens/home/menu.dart';
-import 'package:Tiwee/presentation/screens/home/setting.dart';
+import 'package:tiwee/presentation/screens/home/menu.dart';
+import 'package:tiwee/presentation/screens/home/setting.dart';
 
 final pageControllerProvider = Provider<PageController>((ref) {
   return PageController();

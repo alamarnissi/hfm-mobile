@@ -4,10 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icon.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:Tiwee/business_logic/utils/show_snackbar.dart';
-import 'package:Tiwee/core/consts.dart';
-import 'package:Tiwee/presentation/widgets/main_appbar.dart';
-import 'package:Tiwee/presentation/widgets/setting/setting_card.dart';
+import 'package:tiwee/business_logic/utils/show_snackbar.dart';
+import 'package:tiwee/core/consts.dart';
+import 'package:tiwee/presentation/widgets/main_appbar.dart';
+import 'package:tiwee/presentation/widgets/setting/setting_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Setting extends StatelessWidget {

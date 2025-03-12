@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:Tiwee/business_logic/model/channel.dart';
-import 'package:Tiwee/business_logic/provider/channel_Provider.dart';
-import 'package:Tiwee/business_logic/provider/country_code.dart';
-import 'package:Tiwee/core/consts.dart';
+import 'package:tiwee/business_logic/model/channel.dart';
+import 'package:tiwee/business_logic/provider/channel_Provider.dart';
+import 'package:tiwee/business_logic/provider/country_code.dart';
+import 'package:tiwee/core/consts.dart';
 
 import 'channel_card_provider.dart';
 

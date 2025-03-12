@@ -1,6 +1,6 @@
-import 'package:Tiwee/src/core/commundomain/entitties/based_api_result/api_result_model.dart';
-import 'package:Tiwee/src/core/commundomain/entitties/based_api_result/error_result_model.dart';
-import 'package:Tiwee/src/core/injectable/injection.dart';
+import 'package:tiwee/src/core/commundomain/entitties/based_api_result/api_result_model.dart';
+import 'package:tiwee/src/core/commundomain/entitties/based_api_result/error_result_model.dart';
+import 'package:tiwee/src/core/injectable/injection.dart';
 import 'package:dio/dio.dart';
 
 enum HttpMethodEnum { get, post, put, delete, patch, options }
@@ -18,11 +18,11 @@ class ApiService {
     }
     if (connectTimeoutSeconds != null) {
       _dio.options.connectTimeout =
-          connectTimeoutSeconds; // Connection timeout
+          Duration(seconds: connectTimeoutSeconds); // Connection timeout
     }
     if (receiveTimeoutSeconds != null) {
       _dio.options.receiveTimeout =
-          receiveTimeoutSeconds; // Receive timeout
+          Duration(seconds: receiveTimeoutSeconds); // Receive timeout
     }
     if (headers != null) {
       _dio.options.headers = headers;

@@ -1,6 +1,6 @@
-import 'package:Tiwee/core/consts.dart';
-import 'package:Tiwee/src/features/home/presentation/widgets/sample_player.dart';
-import 'package:Tiwee/src/features/home/presentation/widgets/search_delegate.dart';
+import 'package:tiwee/core/consts.dart';
+import 'package:tiwee/src/features/home/presentation/widgets/sample_player.dart';
+import 'package:tiwee/src/features/home/presentation/widgets/search_delegate.dart';
 import 'package:app_logger/app_logger.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
