@@ -37,7 +37,7 @@ abstract class InjectableModule {
 
     // dio.httpClientAdapter = IOHttpClientAdapter();
 
-    dio.options.baseUrl = getIt<Configuration>().getBaseUrl;
+    dio.options.baseUrl = tiweeGetIt<Configuration>().getBaseUrl;
 
     // Set the NTLM authentication credentials
     // dio.interceptors.add(InterceptorsWrapper(
@@ -75,7 +75,11 @@ abstract class InjectableModule {
     dio.interceptors.add(CustomInterceptors());
 
 
-    return dio;
+    if (!tiweeGetIt.isRegistered<Dio>()) {
+      return dio;
+    }
+    return tiweeGetIt<Dio>();
+
   }
 
   @lazySingleton

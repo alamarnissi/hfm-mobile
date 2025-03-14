@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 enum HttpMethodEnum { get, post, put, delete, patch, options }
 
 class ApiService {
-  final Dio _dio = getIt<Dio>();
+  final Dio _dio = tiweeGetIt<Dio>();
 
   ApiService(
       {String? baseUrl,

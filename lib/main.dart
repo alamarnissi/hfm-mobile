@@ -12,11 +12,13 @@ import 'package:tiwee/presentation/screens/splash/splash_screen.dart';
 export 'package:tiwee/src/core/injectable/app_environment.dart';
 export 'package:tiwee/src/core/injectable/injection.dart';
 export 'package:tiwee/src/routes/routes.dart';
+export 'package:tiwee/src/routes/appRoutes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  configureTiweeDependencies(TiweeAppEnvironment.prod);
+  configureTiweeModuleMicroDependencies(TiweeAppEnvironment.prod);
+  // configureTiweeDependencies(TiweeAppEnvironment.prod);
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Color(0xff1a1726)

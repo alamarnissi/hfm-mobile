@@ -36,11 +36,12 @@ class HomeLogic extends GetxController with StateMixin<HomeState> {
   }
 
   Future<List<TvChannelEntity>> fetchAndConvertM3U(String url) async {
-    final response = await getIt<Dio>().get(url);
+    final response = await tiweeGetIt<Dio>().get(url);
+    // final response = await getIt<Dio>().get(url);
 
     if (response.statusCode == 200) {
       var apiParseResult = parseM3U(response.data);
-      return apiParseResult.where((element) => element['url']!=null&&  element['logo']!=null,)
+      return apiParseResult.where((element) => (element['url']!=null&& element['url']!="")&&  (element['logo']!=null&& element['logo']!="" ),)
           .map<TvChannelEntity>(
             (e) => TvChannelEntity.fromJson(e),
           )

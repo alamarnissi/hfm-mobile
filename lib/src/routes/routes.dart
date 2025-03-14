@@ -1,7 +1,7 @@
 class TiweeRouts {
   static const unknownRoute = "/unknownRoute";
-  static const splashRoute = "/";
-  static const homeRoute = "/home";
+  static const splashRoute = "/tiwee/";
+  static const homeRoute = "/tiwee/home";
 
 
 }
