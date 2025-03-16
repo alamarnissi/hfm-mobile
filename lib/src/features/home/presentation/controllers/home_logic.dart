@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:tiwee/src/core/injectable/injection.dart';
 import 'package:tiwee/src/features/home/domain/entities/tv_channel_entity.dart';
 import 'package:app_logger/app_logger.dart';
@@ -9,8 +10,36 @@ import 'home_state.dart';
 class HomeLogic extends GetxController with StateMixin<HomeState> {
   List<TvChannelEntity> tvChannelsList = [];
   final url = "https://iptv-org.github.io/iptv/index.m3u";
+  final dio = Dio();
+  // final url="https://iptv-org.github.io/iptv/index.category.m3u";
+
   @override
   void onInit() {
+
+    dio.interceptors.add(
+      kDebugMode? LogInterceptor(
+        responseBody: false,
+        requestBody: true,
+        request: true,
+        requestHeader: true,
+        error: true,
+        responseHeader: true,
+        logPrint: (obj) {
+          debugPrint(obj.toString());
+        },
+      ):LogInterceptor(
+        responseBody: false,
+        requestBody: false,
+        request: false,
+        requestHeader: false,
+        error: false,
+        responseHeader: false,
+        logPrint: (obj) {
+          // debugPrint(obj.toString());
+        },
+      ),
+    );
+
     change(null, status: RxStatus.success());
     initData();
     super.onInit();
@@ -36,7 +65,7 @@ class HomeLogic extends GetxController with StateMixin<HomeState> {
   }
 
   Future<List<TvChannelEntity>> fetchAndConvertM3U(String url) async {
-    final response = await tiweeGetIt<Dio>().get(url);
+    final response = await dio.get(url);
     // final response = await getIt<Dio>().get(url);
 
     if (response.statusCode == 200) {

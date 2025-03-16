@@ -39,7 +39,7 @@ class HomePage extends GetView<HomeLogic> {
                 child:controller.tvChannelsList.isEmpty?Center( child: CircularProgressIndicator(),): GridView.builder(
                   itemCount: controller.tvChannelsList.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
+                      crossAxisCount: Get.context?.orientation==Orientation.portrait? 3:6,
                       mainAxisSpacing: 5,
                       crossAxisSpacing: 5,
                       childAspectRatio: 0.6),

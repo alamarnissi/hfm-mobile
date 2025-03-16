@@ -128,7 +128,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
-  module:
-    androidX: true
-    androidPackage: com.example.Tiwee
-    iosBundleIdentifier: com.example.Tiwee
+#  module:
+#    androidX: true
+#    androidPackage: com.example.Tiwee
+#    iosBundleIdentifier: com.example.Tiwee

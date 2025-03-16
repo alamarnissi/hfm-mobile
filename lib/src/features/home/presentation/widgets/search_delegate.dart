@@ -27,7 +27,9 @@ class ChannelSearchDelegate extends SearchDelegate{
 
     return  GridView.builder(
       itemCount: searchResults.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,mainAxisSpacing: 5,crossAxisSpacing: 5,childAspectRatio: 0.6), itemBuilder: (context, index) {
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: Get.context?.orientation==Orientation.portrait? 3:6,
+          mainAxisSpacing: 5,crossAxisSpacing: 5,childAspectRatio: 0.6), itemBuilder: (context, index) {
 
       var channel=searchResults[index];
 
@@ -62,7 +64,7 @@ class ChannelSearchDelegate extends SearchDelegate{
 
     return  GridView.builder(
       itemCount: searchResults.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,mainAxisSpacing: 5,crossAxisSpacing: 5,childAspectRatio: 0.6), itemBuilder: (context, index) {
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(  crossAxisCount: Get.context?.orientation==Orientation.portrait? 3:6,mainAxisSpacing: 5,crossAxisSpacing: 5,childAspectRatio: 0.6), itemBuilder: (context, index) {
 
       var channel=searchResults[index];
 

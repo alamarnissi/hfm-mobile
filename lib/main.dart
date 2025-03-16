@@ -18,12 +18,12 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   configureTiweeModuleMicroDependencies(TiweeAppEnvironment.prod);
-  // configureTiweeDependencies(TiweeAppEnvironment.prod);
+  configureTiweeDependencies(TiweeAppEnvironment.prod);
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Color(0xff1a1726)
   ));
-
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
 
       runApp(ProviderScope(

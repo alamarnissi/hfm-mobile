@@ -14,30 +14,49 @@ class SamplePlayer extends StatefulWidget {
 
 class _SamplePlayerState extends State<SamplePlayer> {
   late FlickManager flickManager;
+  late VideoPlayerController videoPlayerController;
   @override
   void initState() {
     super.initState();
     AppLogger.it.logInfo("url ${widget.url}");
+
+
+    videoPlayerController=  VideoPlayerController.networkUrl(Uri.parse("${widget.url}"));
+
     flickManager = FlickManager(
-        videoPlayerController:VideoPlayerController.networkUrl(Uri.parse("${widget.url}")),
+        videoPlayerController:videoPlayerController,
+
     );
   }
 
   @override
   void dispose() {
     flickManager.dispose();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    AppLogger.it.logInfo("videoPlayerController.value.aspectRatio ${videoPlayerController.value.aspectRatio}");
     return SafeArea(
-      child: Container(
-        child: FlickVideoPlayer(
+      child:
+          AspectRatio(
+            aspectRatio: videoPlayerController.value.aspectRatio ,
 
-            flickManager: flickManager
-        ),
-      ),
+            child: FlickVideoPlayer(
+preferredDeviceOrientation: [
+  DeviceOrientation.landscapeLeft,
+  DeviceOrientation.landscapeRight,
+
+],
+                flickManager: flickManager,
+
+            ),
+          )
+
+
     );
   }
 }

@@ -12,7 +12,7 @@ abstract class Configuration {
 @LazySingleton(as: Configuration, env: [TiweeAppEnvironment.dev])
 class DevConfiguration implements Configuration {
   @override
-  String get getBaseUrl => '#';
+  String get getBaseUrl => 'https://iptv-org.github.io/iptv';
 
   @override
   String get name => 'development';
@@ -22,7 +22,7 @@ class DevConfiguration implements Configuration {
 @LazySingleton(as: Configuration, env: [TiweeAppEnvironment.staging])
 class StagingConfiguration implements Configuration {
   @override
-  String get getBaseUrl => '#';
+  String get getBaseUrl => 'https://iptv-org.github.io/iptv';
 
   @override
   String get name => 'staging';
@@ -33,7 +33,7 @@ class StagingConfiguration implements Configuration {
 @LazySingleton(as: Configuration, env: [TiweeAppEnvironment.prod])
 class ProductionConfiguration implements Configuration {
   @override
-  String get getBaseUrl => '#';
+  String get getBaseUrl => 'https://iptv-org.github.io/iptv';
 
   @override
   String get name => 'production';
