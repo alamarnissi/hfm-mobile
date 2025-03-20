@@ -28,9 +28,11 @@ packages:
   app_logger:
     dependency: "direct main"
     description:
-      path: "../249/app_logger"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: e95d85be16cdf69e8d30a3d69c2cd3351cd28a65
+      url: "https://github.com/taghassan/app_logger"
+    source: git
     version: "0.0.1"
   archive:
     dependency: transitive

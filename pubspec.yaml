@@ -53,8 +53,8 @@ dependencies:
   url_launcher: ^6.0.18
   animate_do: ^3.0.2
   app_logger:
-    path: ../249/app_logger
-#    git: https://github.com/taghassan/app_logger.git
+#    path: ../249/app_logger
+    git: https://github.com/taghassan/app_logger
 
   freezed_annotation:
   equatable:
