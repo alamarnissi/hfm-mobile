@@ -9,7 +9,7 @@ class SplashLogic extends GetxController with StateMixin<SplashState>{
   void onInit() {
     change(null,status: RxStatus.success());
     Future.delayed(Duration(seconds: 2),() {
-      Get.offAllNamed(TiweeRouts.homeRoute);
+      Get.offAllNamed(TiweeRouts.activecodeRoute);
     },);
     super.onInit();
   }

@@ -33,64 +33,123 @@ class HomePage extends GetView<HomeLogic> {
               ),
             ),
             child: controller.obx(
-              (state) => Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
-                child: controller.tvChannelsList.isEmpty
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : GridView.count(
-                        scrollDirection: Get.context?.orientation == Orientation.landscape
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        crossAxisCount:
-                            Get.context?.orientation == Orientation.landscape
-                                ? 1
-                                : 2, // vertical count (rows)
-                        mainAxisSpacing: 5,
-                        crossAxisSpacing: 5,
-                        childAspectRatio: 0.6,
-                        children: List.generate(
-                          controller.tvChannelsList.length,
-                          (index) {
-                            var channel = controller.tvChannelsList[index];
-                            return CachedNetworkImage(
-                              imageUrl: channel.logo,
-                              imageBuilder: (context, imageProvider) => InkWell(
-                                onTap: () {
-                                  AppLogger.it
-                                      .logInfo("channel ${channel.title}");
-                                  AppLogger.it
-                                      .logInfo("channel ${channel.url}");
-                                  if (channel.url != null) {
-                                    Get.to(
-                                        () => SamplePlayer(url: channel.url!));
-                                  }
-                                },
-                                child: Container(
-                                  height: Get.height * 0.3,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8)),
-                                    image: DecorationImage(
-                                      image: imageProvider,
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              placeholder: (context, url) => Center(
-                                child: CircularProgressIndicator(),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  Image.network(
-                                      'https://placehold.co/400x600.png'),
-                            );
+              (state) => Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Top App Header
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "HFM STREAM",
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.settings, color: Colors.white),
+                          onPressed: () {
+                            // Handle settings navigation
                           },
                         ),
-                      ),
+                      ],
+                    ),
+                  ),
+
+                  // Main Grid Area
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 15.0),
+                      child: controller.tvChannelsList.isEmpty
+                          ? Center(child: CircularProgressIndicator())
+                          : GridView.count(
+                              scrollDirection: Get.context?.orientation ==
+                                      Orientation.landscape
+                                  ? Axis.horizontal
+                                  : Axis.vertical,
+                              crossAxisCount: Get.context?.orientation ==
+                                      Orientation.landscape
+                                  ? 1
+                                  : 2, // vertical count (rows)
+                              mainAxisSpacing: 25,
+                              crossAxisSpacing: 40,
+                              childAspectRatio: 1.2, // Less stretched width
+                              children: List.generate(
+                                controller.tvChannelsList.length,
+                                (index) {
+                                  var channel =
+                                      controller.tvChannelsList[index];
+                                  return CachedNetworkImage(
+                                    imageUrl: channel.logo,
+                                    imageBuilder: (context, imageProvider) =>
+                                        InkWell(
+                                      onTap: () {
+                                        AppLogger.it.logInfo(
+                                            "channel ${channel.title}");
+                                        AppLogger.it
+                                            .logInfo("channel ${channel.url}");
+                                        if (channel.url != null) {
+                                          Get.to(() =>
+                                              SamplePlayer(url: channel.url!));
+                                        }
+                                      },
+                                      child: Container(
+                                          width: Get.width / 4.3,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            image: DecorationImage(
+                                              image: imageProvider,
+                                              fit: BoxFit.contain,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black26,
+                                                blurRadius: 6,
+                                                offset: Offset(2, 4),
+                                              )
+                                            ],
+                                          )),
+                                    ),
+                                    placeholder: (context, url) => Center(
+                                        child: CircularProgressIndicator()),
+                                    errorWidget: (context, url, error) =>
+                                        Image.network(
+                                            'https://placehold.co/400x600.png'),
+                                  );
+                                },
+                              ),
+                            ),
+                    ),
+                  ),
+
+                  // Footer Info Row
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Expiration: Unlimited",
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                        Text(
+                          "Username: Admin",
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             )),
       ),

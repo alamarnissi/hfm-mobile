@@ -1,3 +1,5 @@
+import 'package:tiwee/src/features/activecode/presentation/controllers/activecode_binding.dart';
+import 'package:tiwee/src/features/activecode/presentation/pages/activecode_view.dart';
 import 'package:tiwee/src/features/home/presentation/controllers/home_binding.dart';
 import 'package:tiwee/src/features/home/presentation/pages/home_view.dart';
 // import 'package:tiwee/presentation/screens/home/home_page.dart';
@@ -30,5 +32,12 @@ class TiweeAppRouts {
           transition: transition,
           transitionDuration: transitionDuration,
         ),
+        GetPage(
+          name: TiweeRouts.activecodeRoute, 
+          page: () => ActiveCodePage(),
+          binding: ActiveCodeBinding(),
+          transition: transition,
+          transitionDuration: transitionDuration
+          )
       ];
 }
