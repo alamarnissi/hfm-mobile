@@ -1,12 +1,11 @@
-
 import 'package:tiwee/src/features/home/presentation/controllers/home_binding.dart';
 import 'package:tiwee/src/features/home/presentation/pages/home_view.dart';
+// import 'package:tiwee/presentation/screens/home/home_page.dart';
 import 'package:tiwee/src/features/splash/presentation/controllers/splash_binding.dart';
 import 'package:tiwee/src/features/splash/presentation/pages/splash_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 import 'routes.dart';
 
@@ -24,13 +23,12 @@ class TiweeAppRouts {
           transition: transition,
           transitionDuration: transitionDuration,
         ),
-    GetPage(
+        GetPage(
           name: TiweeRouts.homeRoute,
           page: () => const HomePage(),
           binding: HomeBinding(),
           transition: transition,
           transitionDuration: transitionDuration,
         ),
-         ];
-
+      ];
 }

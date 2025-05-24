@@ -36,46 +36,61 @@ class HomePage extends GetView<HomeLogic> {
               (state) => Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
-                child:controller.tvChannelsList.isEmpty?Center( child: CircularProgressIndicator(),): GridView.builder(
-                  itemCount: controller.tvChannelsList.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: Get.context?.orientation==Orientation.portrait? 3:6,
-                      mainAxisSpacing: 5,
-                      crossAxisSpacing: 5,
-                      childAspectRatio: 0.6),
-                  itemBuilder: (context, index) {
-                    var channel = controller.tvChannelsList[index];
-
-                    return CachedNetworkImage(
-                      imageUrl: channel.logo,
-                      imageBuilder: (context, imageProvider) => InkWell(
-                        onTap: () {
-                          AppLogger.it.logInfo("channel ${channel.title}");
-                          AppLogger.it.logInfo("channel ${channel.url}");
-                          if (channel.url != null) {
-                            Get.to(() => SamplePlayer(url: channel.url!));
-                          }
-                        },
-                        child: Container(
-                          height: Get.height * 0.3,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            image: DecorationImage(
-                              image: imageProvider,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
+                child: controller.tvChannelsList.isEmpty
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : GridView.count(
+                        scrollDirection: Get.context?.orientation == Orientation.landscape
+                            ? Axis.horizontal
+                            : Axis.vertical,
+                        crossAxisCount:
+                            Get.context?.orientation == Orientation.landscape
+                                ? 1
+                                : 2, // vertical count (rows)
+                        mainAxisSpacing: 5,
+                        crossAxisSpacing: 5,
+                        childAspectRatio: 0.6,
+                        children: List.generate(
+                          controller.tvChannelsList.length,
+                          (index) {
+                            var channel = controller.tvChannelsList[index];
+                            return CachedNetworkImage(
+                              imageUrl: channel.logo,
+                              imageBuilder: (context, imageProvider) => InkWell(
+                                onTap: () {
+                                  AppLogger.it
+                                      .logInfo("channel ${channel.title}");
+                                  AppLogger.it
+                                      .logInfo("channel ${channel.url}");
+                                  if (channel.url != null) {
+                                    Get.to(
+                                        () => SamplePlayer(url: channel.url!));
+                                  }
+                                },
+                                child: Container(
+                                  height: Get.height * 0.3,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                    image: DecorationImage(
+                                      image: imageProvider,
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              placeholder: (context, url) => Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                              errorWidget: (context, url, error) =>
+                                  Image.network(
+                                      'https://placehold.co/400x600.png'),
+                            );
+                          },
                         ),
                       ),
-                      placeholder: (context, url) => Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                      errorWidget: (context, url, error) =>
-                          Image.network('https://placehold.co/400x600.png'),
-                    );
-                  },
-                ),
               ),
             )),
       ),

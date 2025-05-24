@@ -14,7 +14,7 @@ export 'package:tiwee/src/core/injectable/injection.dart';
 export 'package:tiwee/src/routes/routes.dart';
 export 'package:tiwee/src/routes/appRoutes.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   configureTiweeModuleMicroDependencies(TiweeAppEnvironment.prod);
@@ -23,7 +23,11 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Color(0xff1a1726)
   ));
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
 
 
       runApp(ProviderScope(
@@ -35,7 +39,7 @@ void main() {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(textTheme: GoogleFonts.soraTextTheme(),
           scaffoldBackgroundColor: Color(0xff1a1726),),
-        // home:  MyApp(),
+        home:  MyApp(),
 
       ),
 
