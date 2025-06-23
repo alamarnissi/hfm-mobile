@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tiwee/presentation/screens/splash/splash_screen.dart';
 
@@ -16,6 +17,7 @@ export 'package:tiwee/src/routes/appRoutes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init(); // Initialize storage
 
   configureTiweeModuleMicroDependencies(TiweeAppEnvironment.prod);
   configureTiweeDependencies(TiweeAppEnvironment.prod);
@@ -39,7 +41,7 @@ void main() async {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(textTheme: GoogleFonts.soraTextTheme(),
           scaffoldBackgroundColor: Color(0xff1a1726),),
-        home:  MyApp(),
+        // home:  MyApp(),
 
       ),
 

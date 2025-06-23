@@ -1,23 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tiwee/src/features/home/presentation/pages/home_view.dart';
+
+// import 'package:tiwee/src/features/home/presentation/pages/home_view.dart';
+// import 'package:tiwee/src/features/activecode/presentation/widgets/loader_indicator.dart';
 import 'package:tiwee/src/routes/routes.dart';
+import 'package:tiwee/business_logic/provider/client_provider.dart';
 
-class ActiveCodePage extends StatelessWidget {
-  ActiveCodePage({super.key});
+class ActiveCodePage extends StatefulWidget {
+  const ActiveCodePage({super.key});
 
+  @override
+  State<ActiveCodePage> createState() => _ActiveCodePageState();
+}
+
+class _ActiveCodePageState extends State<ActiveCodePage> {
   final TextEditingController codeController = TextEditingController();
+  bool isLoading = false;
+
+  Future<void> handleActivation() async {
+    final code = codeController.text.trim();
+
+    if (code.isEmpty) {
+      Get.snackbar("Error", "Please enter a valid activation code.",
+          backgroundColor: Colors.red, colorText: Colors.white);
+      return;
+    }
+
+    setState(() => isLoading = true);
+    final result = await fetchClientM3U(code);
+    setState(() => isLoading = false);
+    print("result: $result");
+    if (result != null) {
+      // final storage = GetStorage();
+      // storage.write('client_data', result.client);
+      // storage.write('channel_groups', result.groups);
+
+      // Navigate to home
+      Get.offAllNamed(TiweeRouts.maincategories, arguments: result);
+    } else {
+      Get.snackbar("Error", "Activation failed or code is invalid.",
+          backgroundColor: Colors.red, colorText: Colors.white);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       backgroundColor: const Color(0xFF0B0C1A), // dark background
       body: SafeArea(
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Left Side: Logo and List Users Button
+              // Left Side: Logo
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -28,29 +64,13 @@ class ActiveCodePage extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       image: const DecorationImage(
-                        image: AssetImage('assets/icons/Tiwee.png'), // <-- Add your logo to assets
+                        image: AssetImage(
+                            'assets/icons/Tiwee.png'), // <-- Add your logo to assets
                         fit: BoxFit.contain,
                       ),
                     ),
                   ),
                   const SizedBox(height: 20),
-
-                  // List Users Button
-                  ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: Colors.black,
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                    onPressed: () {
-                      // Handle list users action
-                    },
-                    icon: const Icon(Icons.person),
-                    label: const Text("LIST USERS"),
-                  ),
                 ],
               ),
 
@@ -86,7 +106,8 @@ class ActiveCodePage extends StatelessWidget {
                         hintStyle: const TextStyle(color: Colors.white54),
                         filled: true,
                         fillColor: Colors.black45,
-                        prefixIcon: const Icon(Icons.security, color: Colors.white),
+                        prefixIcon:
+                            const Icon(Icons.security, color: Colors.white),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide.none,
@@ -99,28 +120,29 @@ class ActiveCodePage extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton.icon(
-                        icon: const Icon(Icons.security, color: Colors.white),
+                        onPressed: isLoading ? null : handleActivation,
+                        icon: isLoading
+                            ? const SizedBox(
+                                width: 18,
+                                height: 18,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                      Colors.white),
+                                ),
+                              )
+                            : const Icon(Icons.lock_open, color: Colors.white),
                         label: const Text(
                           "ACTIVATION",
                           style: TextStyle(color: Colors.white),
                         ),
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
                           backgroundColor: Colors.white24,
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        onPressed: () {
-                          final code = codeController.text.trim();
-                          if (code.isNotEmpty) {
-                            // Navigate to HomePage
-                            Get.offAllNamed(TiweeRouts.homeRoute);
-                          } else {
-                            Get.snackbar("Error", "Please enter a valid activation code.",
-                                backgroundColor: Colors.red, colorText: Colors.white);
-                          }
-                        },
                       ),
                     ),
                   ],
@@ -130,6 +152,6 @@ class ActiveCodePage extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ));
   }
 }

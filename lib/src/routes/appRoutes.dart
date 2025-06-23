@@ -2,7 +2,8 @@ import 'package:tiwee/src/features/activecode/presentation/controllers/activecod
 import 'package:tiwee/src/features/activecode/presentation/pages/activecode_view.dart';
 import 'package:tiwee/src/features/home/presentation/controllers/home_binding.dart';
 import 'package:tiwee/src/features/home/presentation/pages/home_view.dart';
-// import 'package:tiwee/presentation/screens/home/home_page.dart';
+import 'package:tiwee/src/features/mainCategories/presentation/controllers/maincategories_binding.dart';
+import 'package:tiwee/src/features/mainCategories/presentation/pages/maincategories_view.dart';
 import 'package:tiwee/src/features/splash/presentation/controllers/splash_binding.dart';
 import 'package:tiwee/src/features/splash/presentation/pages/splash_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,11 +34,16 @@ class TiweeAppRouts {
           transitionDuration: transitionDuration,
         ),
         GetPage(
-          name: TiweeRouts.activecodeRoute, 
-          page: () => ActiveCodePage(),
-          binding: ActiveCodeBinding(),
-          transition: transition,
-          transitionDuration: transitionDuration
-          )
+            name: TiweeRouts.activecodeRoute,
+            page: () => ActiveCodePage(),
+            binding: ActiveCodeBinding(),
+            transition: transition,
+            transitionDuration: transitionDuration),
+        GetPage(
+            name: TiweeRouts.maincategories,
+            page: () => MainCategoriesPage(),
+            binding: MainCategoriesBinding(),
+            transition: transition,
+            transitionDuration: transitionDuration)
       ];
 }

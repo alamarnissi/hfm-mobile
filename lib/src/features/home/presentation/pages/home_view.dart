@@ -1,9 +1,13 @@
 import 'package:tiwee/core/consts.dart';
+import 'package:tiwee/src/features/home/presentation/widgets/footer.dart';
+import 'package:tiwee/src/features/home/presentation/widgets/header.dart';
 import 'package:tiwee/src/features/home/presentation/widgets/sample_player.dart';
+// import 'package:tiwee/src/features/home/presentation/widgets/chewie_player.dart';
 import 'package:tiwee/src/features/home/presentation/widgets/search_delegate.dart';
 import 'package:app_logger/app_logger.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 import '../controllers/home_logic.dart';
@@ -37,29 +41,7 @@ class HomePage extends GetView<HomeLogic> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   // Top App Header
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "HFM STREAM",
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.settings, color: Colors.white),
-                          onPressed: () {
-                            // Handle settings navigation
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
+                  HeaderApp(),
 
                   // Main Grid Area
                   Expanded(
@@ -99,25 +81,39 @@ class HomePage extends GetView<HomeLogic> {
                                               SamplePlayer(url: channel.url!));
                                         }
                                       },
-                                      child: Container(
-                                          width: Get.width / 4.3,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
                                             borderRadius:
-                                                BorderRadius.circular(12),
-                                            image: DecorationImage(
-                                              image: imageProvider,
-                                              fit: BoxFit.contain,
+                                                BorderRadius.circular(60),
+                                            child: CachedNetworkImage(
+                                              imageUrl: channel.logo,
+                                              width: 100, // Bigger image
+                                              height: 100,
+                                              fit: BoxFit.cover,
+                                              placeholder: (context, url) =>
+                                                  CircularProgressIndicator(
+                                                      strokeWidth: 2),
+                                              errorWidget: (context, url,
+                                                      error) =>
+                                                  Image.network(
+                                                      'https://placehold.co/100x100.png'),
                                             ),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.black26,
-                                                blurRadius: 6,
-                                                offset: Offset(2, 4),
-                                              )
-                                            ],
-                                          )),
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Text(
+                                            channel.title ?? '',
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     placeholder: (context, url) => Center(
                                         child: CircularProgressIndicator()),
@@ -132,22 +128,9 @@ class HomePage extends GetView<HomeLogic> {
                   ),
 
                   // Footer Info Row
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Expiration: Unlimited",
-                          style: TextStyle(color: Colors.white70),
-                        ),
-                        Text(
-                          "Username: Admin",
-                          style: TextStyle(color: Colors.white70),
-                        ),
-                      ],
-                    ),
+                  FooterApp(
+                    username: 'N/A',
+                    expiresAt: 'Unlimited',
                   ),
                 ],
               ),

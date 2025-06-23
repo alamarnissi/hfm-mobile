@@ -95,7 +95,7 @@ class HomeLogic extends GetxController with StateMixin<HomeState> {
         final matches = RegExp(r'tvg-logo="(.*?)"').firstMatch(line);
         currentLogo = matches?.group(1) ?? '';
 
-        final titleMatch = RegExp(r',(.+)$').firstMatch(line);
+        final titleMatch = RegExp(r'tvg-name="(.*?)"').firstMatch(line);
         currentTitle = titleMatch?.group(1)?.trim() ?? '';
 
         final groupMatch = RegExp(r'group-title="(.*?)"').firstMatch(line);
