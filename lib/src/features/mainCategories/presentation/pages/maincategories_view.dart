@@ -19,6 +19,7 @@ class _MainCategoriesPageState extends State<MainCategoriesPage> {
 
     final args = ModalRoute.of(context)?.settings.arguments;
 
+      print("arguments:" + args.toString());
     if (args != null && args is Map) {
       client = Map<String, dynamic>.from(args['client'] ?? {});
       channelGroups = Map<String, dynamic>.from(args['groups'] ?? {});

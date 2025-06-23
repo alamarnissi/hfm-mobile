@@ -42,7 +42,10 @@ class HeaderApp extends StatelessWidget {
                     ),
                     IconButton(
                       icon: Icon(Icons.settings, color: Colors.white),
-                      onPressed: () {},
+                      onPressed: () {
+                        // Handle logout
+                        Get.offAllNamed(TiweeRouts.settings);
+                      },
                     ),
                     IconButton(
                       icon: Icon(Icons.logout, color: Colors.white),

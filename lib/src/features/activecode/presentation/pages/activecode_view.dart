@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 
 // import 'package:tiwee/src/features/home/presentation/pages/home_view.dart';
@@ -29,14 +30,20 @@ class _ActiveCodePageState extends State<ActiveCodePage> {
     setState(() => isLoading = true);
     final result = await fetchClientM3U(code);
     setState(() => isLoading = false);
-    print("result: $result");
+    //print result client data
+    // print("result" + result.toString());
     if (result != null) {
-      // final storage = GetStorage();
-      // storage.write('client_data', result.client);
-      // storage.write('channel_groups', result.groups);
+      final storage = GetStorage();
+      storage.write('device_model', result.client['model']);
+      storage.write('serial_number', result.client['sn']);
+      storage.write('mac_address', result.client['mac']);
+
 
       // Navigate to home
-      Get.offAllNamed(TiweeRouts.maincategories, arguments: result);
+      Get.offAllNamed(TiweeRouts.maincategories, arguments: {
+        'client': result.client,
+        'groups': result.groups,
+      });
     } else {
       Get.snackbar("Error", "Activation failed or code is invalid.",
           backgroundColor: Colors.red, colorText: Colors.white);

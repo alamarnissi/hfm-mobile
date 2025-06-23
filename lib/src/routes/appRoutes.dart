@@ -1,9 +1,12 @@
+import 'package:tiwee/presentation/screens/home/setting.dart';
 import 'package:tiwee/src/features/activecode/presentation/controllers/activecode_binding.dart';
 import 'package:tiwee/src/features/activecode/presentation/pages/activecode_view.dart';
 import 'package:tiwee/src/features/home/presentation/controllers/home_binding.dart';
 import 'package:tiwee/src/features/home/presentation/pages/home_view.dart';
 import 'package:tiwee/src/features/mainCategories/presentation/controllers/maincategories_binding.dart';
 import 'package:tiwee/src/features/mainCategories/presentation/pages/maincategories_view.dart';
+import 'package:tiwee/src/features/settings/presentation/controllers/settings_binding.dart';
+import 'package:tiwee/src/features/settings/presentation/pages/settings_view.dart';
 import 'package:tiwee/src/features/splash/presentation/controllers/splash_binding.dart';
 import 'package:tiwee/src/features/splash/presentation/pages/splash_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -44,6 +47,12 @@ class TiweeAppRouts {
             page: () => MainCategoriesPage(),
             binding: MainCategoriesBinding(),
             transition: transition,
-            transitionDuration: transitionDuration)
+            transitionDuration: transitionDuration),
+        GetPage(
+            name: TiweeRouts.settings,
+            page: () => SettingsPage(),
+            binding: SettingsBinding(),
+            transition: transition,
+            transitionDuration: transitionDuration),
       ];
 }

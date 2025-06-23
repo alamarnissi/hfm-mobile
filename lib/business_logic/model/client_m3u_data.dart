@@ -10,4 +10,9 @@ class ClientM3UData {
       groups: Map<String, dynamic>.from(json['groups']),
     );
   }
+
+  @override
+  String toString() {
+    return 'ClientM3UData(client: $client, groups: ${groups.keys.toList()})';
+  }
 }
