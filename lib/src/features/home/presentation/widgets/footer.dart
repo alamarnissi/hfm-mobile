@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:get_storage/get_storage.dart';
 
 class FooterApp extends StatelessWidget {
-  final String username;
-  final dynamic expiresAt;
 
   const FooterApp({
     super.key,
-    required this.username,
-    required this.expiresAt,
   });
 
   String _formatDate(dynamic input) {
@@ -25,6 +22,11 @@ class FooterApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final storage = GetStorage();
+
+    final username = storage.read('username') ?? 'Unknown';
+    final expiresAt = storage.read('expire_time') ?? 'unlimited';
+
     return Padding(
       padding:
           const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),

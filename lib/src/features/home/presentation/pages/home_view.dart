@@ -128,10 +128,7 @@ class HomePage extends GetView<HomeLogic> {
                   ),
 
                   // Footer Info Row
-                  FooterApp(
-                    username: 'N/A',
-                    expiresAt: 'Unlimited',
-                  ),
+                  FooterApp(),
                 ],
               ),
             )),

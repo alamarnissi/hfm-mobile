@@ -60,10 +60,7 @@ class _MainCategoriesPageState extends State<MainCategoriesPage> {
             ),
 
             // Pass client data to footer
-            FooterApp(
-              username: client['username'] ?? 'N/A',
-              expiresAt: client['expire_time'] ?? 'Unlimited',
-            ),
+            FooterApp(),
           ],
         ),
       ),

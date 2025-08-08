@@ -37,6 +37,8 @@ class _ActiveCodePageState extends State<ActiveCodePage> {
       storage.write('device_model', result.client['model']);
       storage.write('serial_number', result.client['sn']);
       storage.write('mac_address', result.client['mac']);
+      storage.write('username', result.client['username']);
+      storage.write('expire_time', result.client['expire_time']);
 
 
       // Navigate to home
